@@ -45,6 +45,9 @@ public class TurretHoodManual extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        SmartDashboard.putBoolean("Far Hood Position", false);
+        SmartDashboard.putBoolean("Middle Hood Position", false);
+        SmartDashboard.putBoolean("Close Hood Position", false);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -58,14 +61,48 @@ public class TurretHoodManual extends Command {
         SmartDashboard.putNumber("area", area);
         SmartDashboard.putNumber("hoodPosition", hoodPosition);
 
-        if(area > 22 && area > 20) {                                        //should these be flipped?
-            if(hoodPosition > 22 && hoodPosition < 20) {
+        if(area > 10) {                                      
+            if(hoodPosition > -10 && hoodPosition < 0) {
+                SmartDashboard.putBoolean("Far Hood Position", true);
+            } else {
+                SmartDashboard.putBoolean("Far Hood Position", false);
+            }
+        } else if(area < 25 && area > 10) {                                       
+            if(hoodPosition > -20 && hoodPosition < -10) {
+                SmartDashboard.putBoolean("Middle Hood Position", true);
+            } else {
+                SmartDashboard.putBoolean("Middle Hood Position", false);
+            }
+        } else if(area > 25) {                                      
+            if(hoodPosition > -30 && hoodPosition < -20) {
+                SmartDashboard.putBoolean("Close Hood Position", true);
+            } else {
+                SmartDashboard.putBoolean("Close Hood Position", false);
+            }
+/*        } else if(area > 30) {                                       
+            if(hoodPosition > 0 && hoodPosition < 10) {
                 SmartDashboard.putBoolean("Hood Position", true);
             } else {
                 SmartDashboard.putBoolean("Hood Position", false);
             }
-        } else {
-            SmartDashboard.putBoolean("Hood Position", false);
+ /*       } else if(area < 30 && area > 24) {                                       
+            if(hoodPosition > 15 && hoodPosition < 20) {
+                SmartDashboard.putBoolean("Hood Position", true);
+            } else {
+                SmartDashboard.putBoolean("Hood Position", false);
+            }
+        } else if(area < 36 && area > 30) {                                       
+            if(hoodPosition > 10 && hoodPosition < 15) {
+                SmartDashboard.putBoolean("Hood Position", true);
+            } else {
+                SmartDashboard.putBoolean("Hood Position", false);
+            }
+        } else if(area > 36) {                                       
+            if(hoodPosition > 0 && hoodPosition < 10) {
+                SmartDashboard.putBoolean("Hood Position", true);
+            } else {
+                SmartDashboard.putBoolean("Hood Position", false);
+            } */
         }
 
 

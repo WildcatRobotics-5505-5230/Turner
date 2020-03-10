@@ -55,12 +55,12 @@ public class TurretRotate extends PIDCommand {
 
         table = NetworkTableInstance.getDefault().getTable("limelight");
 
-        Kp = .5;
+   /*     Kp = .5;
         SmartDashboard.putNumber("Kp", Kp);
         Ki = 0;
         SmartDashboard.putNumber("Ki", Ki);
         Kd = 0;
-        SmartDashboard.putNumber("Kd", Kd);
+        SmartDashboard.putNumber("Kd", Kd); */
     }
 
     @Override
@@ -86,6 +86,8 @@ public class TurretRotate extends PIDCommand {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        table.getEntry("ledMode").setNumber(3);
+        
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -93,9 +95,9 @@ public class TurretRotate extends PIDCommand {
     protected void execute() {
 
 
-        Kp = SmartDashboard.getNumber("Kp", 0);
-        Kd = SmartDashboard.getNumber("Kd", 0);
-        Ki = SmartDashboard.getNumber("Ki", 0);
+  //      Kp = SmartDashboard.getNumber("Kp", 0);
+    //    Kd = SmartDashboard.getNumber("Kd", 0);
+      //  Ki = SmartDashboard.getNumber("Ki", 0);
 
    //     getPIDController().setD(Kd);
    //     getPIDController().setI(Ki);
@@ -112,6 +114,7 @@ public class TurretRotate extends PIDCommand {
     @Override
     protected void end() {
         Robot.turretrotate.setSpeed(0);
+        table.getEntry("ledMode").setNumber(1);
     }
 
     // Called when another command which requires one or more of the same
@@ -119,5 +122,6 @@ public class TurretRotate extends PIDCommand {
     @Override
     protected void interrupted() {
         end();
+        table.getEntry("ledMode").setNumber(1);
     }
 }

@@ -44,7 +44,7 @@ private double localSpeedVar;
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.turretrotate.setSpeed(Robot.oi.getxbox2().getRawAxis(5)*localSpeedVar);
+        Robot.turretrotate.setSpeed(Robot.oi.getxbox2().getRawAxis(4)*localSpeedVar);
     }
 
     // Make this return true when this Command no longer needs to run execute()

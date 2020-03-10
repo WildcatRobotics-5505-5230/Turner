@@ -47,7 +47,7 @@ public class baselineAuton extends CommandGroup {
 
         requires (Robot.drive);
 
-    	addSequential(new driveStraight(10, .5));
+    	addSequential(new driveStraight(-30, .5));
  
     } 
 }

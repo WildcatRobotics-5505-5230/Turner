@@ -138,6 +138,8 @@ robotDrive41.setMaxOutput(1.0);
 
             SmartDashboard.putBoolean("HasValidTarget", getLimelightTarget());
 
+    //        SmartDashboard.putBoolean("High Gear", getShiftingSolenoid());
+
 /*      SmartDashboard.putNumber("Right Encoder", getRightEncoder());
         SmartDashboard.putNumber("Left Encoder", getLeftEncoder());       
         SmartDashboard.putBoolean("Is Driver Control", isDriverControlMode);
@@ -164,14 +166,22 @@ public void shift() {
             System.out.println("Start Shift");
             if(shiftingSolenoid.get() != Value.kForward) {
                 shiftingSolenoid.set(Value.kForward);
-                SmartDashboard.putBoolean("Gear", true);
-                System.out.println("Shifted forward");
+                SmartDashboard.putBoolean("High Gear", true);
+        //        System.out.println("Shifted forward");
             } else {
                 shiftingSolenoid.set(Value.kReverse);
-                SmartDashboard.putBoolean("Gear", false);
-                System.out.println("Shifted Backward");
+                SmartDashboard.putBoolean("High Gear", false);
+        //        System.out.println("Shifted Backward");
     }
 }
+
+/*public boolean getShiftingSolenoid() {
+    if(shiftingSolenoid.get() != Value.kForward) {
+        return SmartDashboard.putBoolean("High Gear", true);
+    } else {
+        return SmartDashboard.putBoolean("High Gear", false);
+}
+} */
 
  /*      if(DriverStation.getInstance().getMatchTime() > 29 &&  DriverStation.getInstance().getMatchTime() < 31 && DriverStation.getInstance().isOperatorControl()) {
             stick.setRumble(RumbleType.kLeftRumble, 1);
@@ -181,10 +191,10 @@ public void shift() {
 
         public void joystickInput (Joystick stick) {
             if (driverMode == true) {
-                double localSpeedVar = -.75;
+                double localSpeedVar = -.80;
                 robotDrive41.tankDrive(stick.getRawAxis(1)*localSpeedVar, stick.getRawAxis(5)*localSpeedVar);
             } else {
-                double localSpeedVar = .75;
+                double localSpeedVar = .80;
                 robotDrive41.tankDrive(stick.getRawAxis(5)*localSpeedVar, stick.getRawAxis(1)*localSpeedVar);
             }
 
@@ -215,7 +225,7 @@ public void shift() {
         }
 
         public void driveStraight(double speed) {
-            robotDrive41.tankDrive(speed, speed);
+            robotDrive41.tankDrive(-speed, -speed);
         }
 
         public void stop() {

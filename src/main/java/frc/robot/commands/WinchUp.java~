@@ -44,7 +44,7 @@ public class WinchUp extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.winch.setSpeed(.5);
+        Robot.winch.setSpeed(.8);
     }
 
     // Make this return true when this Command no longer needs to run execute()

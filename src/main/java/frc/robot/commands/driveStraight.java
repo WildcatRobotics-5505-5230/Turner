@@ -48,16 +48,28 @@ public class driveStraight extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.drive.driveStraight(m_Speed);
+        if(m_Distance > 0) {
+            Robot.drive.driveStraight(m_Speed);
+        } else {
+            Robot.drive.driveStraight(-m_Speed);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        if (Robot.drive.getCurrentPositionInInches() > m_Distance + startingPosition) {
-            return true;
+        if(m_Distance > 0) {
+            if (Robot.drive.getCurrentPositionInInches() < m_Distance - startingPosition) {     // going forward
+                return true;
+            } else {
+                return false;
+            }
         } else {
-        return false;
+            if (Robot.drive.getCurrentPositionInInches() > startingPosition - m_Distance) { // going backward  starting position - m_Distance
+                return true;
+            } else {
+                return false;
+            }   
         }
     }
 
